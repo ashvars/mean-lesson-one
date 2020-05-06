@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-spinner *ngIf="loading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onAddPost()" *ngIf="!loading">
+    <mat-form-field>
+      <input matInput name="title" formControlName="title" placeholder="Enter Title" />
+      <mat-error *ngIf="form.get('title').invalid">Title cannot be blank</mat-error>
+    </mat-form-field>
+    <button mat-stroked-button type="button" (click)="filePicker.click()">Add Image</button>
+    <input type="file" hidden #filePicker (change)="onImageSelect($event)"/>
+    <div class="image-preview" *ngIf="imgPreview && imgPreview !== '' && !form.get('image').invalid">
+      <img [alt]="form.value.title" [src]="imgPreview" />
+    </div>
+    <mat-form-field>
+      <textarea matInput rows="6" formControlName="content" name="content" placeholder="Enter Content" ></textarea>
+      <mat-error *ngIf="form.get('content').invalid">Content cannot be blank</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" >Save</button>
+  </form>
+</mat-card>

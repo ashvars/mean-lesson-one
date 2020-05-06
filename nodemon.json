@@ -1,0 +1,6 @@
+{
+  "env": {
+    "JWT_KEY": "this-is-the-secret-key",
+    "MONGO_PWD": "raMi3f3Ok6PPxNPN"
+  }
+}
